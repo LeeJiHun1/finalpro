@@ -75,7 +75,7 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             itemView.txt_lnmAdres.text = fresh.lnmAdres
             itemView.txt_unit.text = ""
             itemView.txt_rnAdres.text = fresh.rnAdres
-            itemView.txt_zipno.text = fresh.zipNo.toString()
+            itemView.txt_zipno.text = "fresh.zipNo"
         }
     }
 }//end of ItemViewHolder

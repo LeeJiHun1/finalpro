@@ -1,19 +1,6 @@
 package com.example.finalpro.result
-import kotlinx.android.synthetic.main.fragment_result.view.*
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLEncoder;
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -25,8 +12,7 @@ import com.example.finalpro.list.FreshWrapper
 import com.example.finalpro.list.Location
 import com.example.finalpro.list.SaveItem
 import com.example.finalpro.network.NetworkModule
-import com.example.finalpro.R
-import com.squareup.moshi.JsonAdapter
+
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -34,19 +20,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.gildor.coroutines.okhttp.await
 
-
-
-
-
-
-
 class ResultViewModel: ViewModel() {
+
     // JSON 라이브러리 모시(moshi) 플러그인
     val moshi by lazy {
         //data class를 JSON처럼 다룰 수 있도록 해주는 Moshi 플러그인
 
         Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
     }
+
     //resultList LiveData 선언
     private val resultList: MutableLiveData<List<Location>> = MutableLiveData()
 
@@ -84,10 +66,12 @@ class ResultViewModel: ViewModel() {
             }
         }
     }//end of saveResult
+
     val errorHandler = CoroutineExceptionHandler { _, exception ->
         Log.e("error", exception.message)
 //        userNoticeMsg.postValue(exception.message)
     }
+
     //Request 객체 생성 함수
     fun loadDataFromURL(
         selectsearchSe: String,
@@ -99,28 +83,27 @@ class ResultViewModel: ViewModel() {
             /* 분류코드(소분류), 검색일자, 검색수량을 인자로 HttpUrl 객체 생성 함수를 호출하여
                HttpUrl 객체 생성 */
             NetworkModule.makeHttpUrl(          //전달 인자
-                searchSe = selectsearchSe,    //dong, road을 입력받음
+                searchSe = selectsearchSe,    //dong을 입력받음
                 srchwrd = selectsrchwrd      //주소를 입력받음
             )
         )
+
         Log.i("HTTP", request.toString())
 
         /* Coroutine을 이용하여 IO 스레드에서 경락가격정보서비스 서버에 요청  */
         viewModelScope.launch(Dispatchers.IO + errorHandler) {
+            Log.i("FRESH", request.url.toString())
 
-            //Log.i("FRESH", request.url.toString())
             /* response(응답) 객체 - 경락가격정보 검색 요청
                - OkHTTPClient.newCall()의 인자로 Request 객체(request)를 전달하여 실행(요청)
              */
-
-           // val answer: String =
             val response = NetworkModule.clinent.newCall(request).await()
-            Log.i("HTTP", response.body.toString())
 
             /* String을 Moshi를 이용 JSON Body로 파싱 */
             val freshData =
                 response.body?.string()?.let { mapppingStringToNews(it) }?: emptyList()
-            Log.i("HTTP", freshData.toString())
+
+
             //resultList(LiveData) 저장
             resultList.postValue(freshData)
         }
@@ -128,11 +111,12 @@ class ResultViewModel: ViewModel() {
 
     //Moshi를 이용 JSON Body로 파싱
     fun mapppingStringToNews(jsonBody: String): List<Location> {
+
         // json 스트링을 데이터 클래스(FreshWrapper)에 맞게 자동으로 맵핑해주는 어댑터를 생성
         val newsStringToJsonAdapter = moshi.adapter(FreshWrapper::class.java)
+
         //newsStringToJsonAdapter.fromJson() - String -> FreshWrapper?
         //newsStringToJsonAdapter.toJson() - FreshWrapper -> String
-
         val newsResponse:FreshWrapper? = newsStringToJsonAdapter.fromJson(jsonBody)
         Log.i("LIST", "${newsResponse}")//list=[FreshData(id=null, saveId=null, lname=과실류, mname=포도, ...)]
 

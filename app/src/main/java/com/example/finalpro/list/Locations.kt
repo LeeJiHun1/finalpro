@@ -38,9 +38,9 @@ data class Location(
     @Json(name = "lnmAdres") //도로명 주소
     var lnmAdres: String,
     @Json(name = "rnAdres") //지번 주소
-    var rnAdres: String/*,
+    var rnAdres: String,
     @Json(name = "searchSe")//dong : 동(읍/면)명, road : 도로명 post : 우편 번호
-    var searchSe: String*/
+    var searchSe: String
 )
 
 
