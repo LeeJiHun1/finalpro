@@ -2,6 +2,7 @@ package com.example.finalpro.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.finalpro.R
 import kotlinx.android.synthetic.main.activity_main_page.*
 
 class MainPage : AppCompatActivity() {
