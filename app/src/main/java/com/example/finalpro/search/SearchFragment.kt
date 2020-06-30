@@ -126,6 +126,7 @@ class SearchFragment : Fragment() {
                - selectedFruit: 과일/야채 상수명(APPLE, PEAR, GRADPE, ...)
                - selectedDate:  날짜(YYYY-MM-DD)
             */
+
             selectedlocation = search_editText.text.toString()
             if ( selectedlocation == null) {
                 /* 선택이 안된 경우 토스트 메세지 출력 */
@@ -136,7 +137,10 @@ class SearchFragment : Fragment() {
                 findNavController().navigate(
                     R.id.action_searchFragment_to_resultFragment,
                     Bundle().apply {
-                        putString("SELECT_SEARCHSE", "dong")   //원래 dong, 도로명 주소 전부 되게 하려고 했는데 일단 dong부터 되는지 구현
+                        if(radio_dong.isChecked == true){
+                        putString("SELECT_SEARCHSE", "dong")}
+                        else{putString("SELECT_SEARCHSE", "road")}//원래 dong, 도로명 주소 전부 되게 하려고 했는데 일단 dong부터 되는지 구현
+
                         putString("SELECT_SRCHWRD", selectedlocation) //edit text 값에 주소 ex)와동801-10을 넣어서 SELECT_SRCHWRD로 넘김
                     })
                 selectedlocation = null

@@ -59,7 +59,7 @@ class ResultFragment : Fragment() {
             /* 경락가격정보 서버에 검색 요청
                - resultViewModel.loadDataFromURL() 함수 호출
             */
-            resultViewModel.loadDataFromURL(selectsearchSe, selectsrchwrd="와동801-10")
+            resultViewModel.loadDataFromURL(selectsearchSe, selectsrchwrd)
 
             //서버에서 응답한 응답 데이터의 변화를 감지하기 위해 LiveData(resultList())에 observe 설정
             resultViewModel.resultList().observe(viewLifecycleOwner, Observer {
