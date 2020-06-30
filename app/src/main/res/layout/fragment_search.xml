@@ -70,8 +70,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     <Button
         android:id="@+id/btn_search"
         android:layout_width="match_parent"

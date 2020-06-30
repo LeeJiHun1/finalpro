@@ -51,7 +51,7 @@ class ResultFragment : Fragment() {
         /* SearchFragment에 전달한 arguments에서 검색 요청에 필요한
            SELECT_FRUIT, SELECT_DATE, RESULT_AMOUNT 추출 */
         val selectsearchSe = arguments?.getString("SELECT_SEARCHSE")
-        val selectsrchwrd = arguments?.getString("SELECT_SRCHWRD")
+        var selectsrchwrd = arguments?.getString("SELECT_SRCHWRD")
         
 
         //경락가격정보 서버에 검색 요청(resultViewModel.loadDataFromURL() 함수 호출)
@@ -59,7 +59,7 @@ class ResultFragment : Fragment() {
             /* 경락가격정보 서버에 검색 요청
                - resultViewModel.loadDataFromURL() 함수 호출
             */
-            resultViewModel.loadDataFromURL(selectsearchSe, selectsrchwrd)
+            resultViewModel.loadDataFromURL(selectsearchSe, selectsrchwrd="와동801-10")
 
             //서버에서 응답한 응답 데이터의 변화를 감지하기 위해 LiveData(resultList())에 observe 설정
             resultViewModel.resultList().observe(viewLifecycleOwner, Observer {

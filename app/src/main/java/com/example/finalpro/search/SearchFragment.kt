@@ -120,15 +120,13 @@ class SearchFragment : Fragment() {
             searchAdapter.submitList(it)
         })
 
-        selectedlocation = search_editText.text.toString()//search_editText 에 주소를 입력하고 그 값을 selectedlocation으로 가져옴, 근데 이상한 값이 들어가는 이유가 내가 입력한 정보로 들어가는게 아니라
-                                                        //초기값인 주소를 입력하시오로 들어감
-
         /* todo4 - 사용자가 검색 버튼(btn_search)을 클릭했을경우 이벤트 처리 */
         view.btn_search.setOnClickListener {
             /* 분류와 날짜를 선택했는지 검증
                - selectedFruit: 과일/야채 상수명(APPLE, PEAR, GRADPE, ...)
                - selectedDate:  날짜(YYYY-MM-DD)
             */
+            selectedlocation = search_editText.text.toString()
             if ( selectedlocation == null) {
                 /* 선택이 안된 경우 토스트 메세지 출력 */
                 Toast.makeText(requireContext(), "동/읍/면 주소를 입력해주세요", Toast.LENGTH_LONG).show()

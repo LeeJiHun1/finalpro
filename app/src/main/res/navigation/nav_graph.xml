@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.finalpro.search.SearchFragment"
-        android:label="fragment_search"
+        android:label="검색"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_saveFragment"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/saveFragment"
         android:name="com.example.finalpro.local.SaveFragment"
-        android:label="fragment_save"
+        android:label="저장 결과"
         tools:layout="@layout/fragment_save" >
         <argument
             android:name="SAVE_ID"
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.finalpro.result.ResultFragment"
-        android:label="fragment_result"
+        android:label="검색 결과"
         tools:layout="@layout/fragment_result" >
         <argument
             android:name="SELECT_SEARCHSE"
