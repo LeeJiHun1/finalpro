@@ -39,4 +39,8 @@
             android:name="SELECT_SRCHWRD"
             app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/mainPage"
+        android:name="com.example.finalpro.main.MainPage"
+        android:label="MainPage" />
 </navigation>
