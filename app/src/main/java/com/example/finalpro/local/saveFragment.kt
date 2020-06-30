@@ -44,7 +44,7 @@ class SaveFragment : Fragment() {
         view.list_save.layoutManager = LinearLayoutManager(requireContext())
 
         /* 전달받은 bundle 객체에서 SAVE_ID를 추출  */
-        arguments?.getLong("SAVE_ID")?.let { saveId ->
+        arguments?.getLong("SAVE_ID")?.let { saveId ->  //saveId를 전달 받음
             //저장된 DB에서 saveId로 검색하여  출력
 
             /* PagedList 를 LiveData 형태로 사용하기 위해서 LivePagedListBuilder 를 통해서

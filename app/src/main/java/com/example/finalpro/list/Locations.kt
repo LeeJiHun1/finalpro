@@ -32,7 +32,7 @@ data class FreshWrapper(
 data class Location(
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null,
-    var saveId: Long? = null,
+    var saveId: Long? = null,  //save될때 saveId를 기준으로 호출
     @Json(name = "zipno")//우편번호
     var zipNo: Int,
     @Json(name = "lnmAdres") //도로명 주소

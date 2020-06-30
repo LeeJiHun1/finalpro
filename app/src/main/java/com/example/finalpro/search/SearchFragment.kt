@@ -57,7 +57,7 @@ class SearchFragment : Fragment() {
         /* Dialog의 builder 클래스를 초기화 */
         val builder = AlertDialog.Builder(requireContext())
         /* builder에 Dialog 제목을 설정 */
-        builder.setTitle("분류를 선택해주세요.")
+        builder.setTitle("동/읍/면 주소를 입력해주세요")
 
         /* 분류 Dialog에서 과일을 선택하면, 해당 과일의 상수명을 반환하도록 builder 설정
             - map: 컬렉션 내 인자를 변환하여 반환
@@ -120,6 +120,8 @@ class SearchFragment : Fragment() {
             searchAdapter.submitList(it)
         })
 
+        selectedlocation = search_editText.text.toString()//search_editText 에 주소를 입력하고 그 값을 selectedlocation으로 가져옴, 근데 이상한 값이 들어가는 이유가 내가 입력한 정보로 들어가는게 아니라
+                                                        //초기값인 주소를 입력하시오로 들어감
 
         /* todo4 - 사용자가 검색 버튼(btn_search)을 클릭했을경우 이벤트 처리 */
         view.btn_search.setOnClickListener {
@@ -129,14 +131,15 @@ class SearchFragment : Fragment() {
             */
             if ( selectedlocation == null) {
                 /* 선택이 안된 경우 토스트 메세지 출력 */
-                Toast.makeText(requireContext(), "분류를 입력해주세요.", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "동/읍/면 주소를 입력해주세요", Toast.LENGTH_LONG).show()
             } else {
                 /* 내비게이션을 통해서 resultFragment로 화면 전환
                    - 과일/야채 상수명, 검색일자, 수량을 Bundle 객체에 담아 ResultFragemtnt에 전달 */
                 findNavController().navigate(
                     R.id.action_searchFragment_to_resultFragment,
                     Bundle().apply {
-                        putString("SELECT_FRUIT", selectedlocation)
+                        putString("SELECT_SEARCHSE", "dong")   //원래 dong, 도로명 주소 전부 되게 하려고 했는데 일단 dong부터 되는지 구현
+                        putString("SELECT_SRCHWRD", selectedlocation) //edit text 값에 주소 ex)와동801-10을 넣어서 SELECT_SRCHWRD로 넘김
                     })
                 selectedlocation = null
             }

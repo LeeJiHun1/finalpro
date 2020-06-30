@@ -65,7 +65,7 @@ class ResultFragment : Fragment() {
             resultViewModel.resultList().observe(viewLifecycleOwner, Observer {
                 /* resultAdpater에 데이터에 변동됨을 알려줍니다. */
                 resultAdpater.freshList = it//검색한  List<FreshData>를  resultAdpater에 전달
-                Log.i("FRESH", "it: $it")
+                Log.i("LOCATION", "it: $it")
                 resultAdpater.notifyDataSetChanged()
 
                 /* 로딩은 사라집니다. */

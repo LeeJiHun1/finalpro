@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
    - 공공DB 서버에 요청할 OkHttp Request 객체 생성
  */
 object NetworkModule {
-    private val keyValue = "itbiCnyof8fKmuSu%2BpwuU%2Fm1AbM6Hnbwuy3iGg%2Fz%2FqxvjGC5R4iSQ6LvrDWcv7PF%2Bw%2FZE5XYn0eZRKOP%2F7acwQ%3D%3D"
+    private val keyValue = "itbiCnyof8fKmuSu%2BpwuU%2Fm1AbM6Hnbwuy3iGg%2Fz%2FqxvjGC5R4iSQ6LvrDWcv7PF%2Bw%2FZE5XYn0eZRKOP%2F7acwQ%3D%3D" //키
 
     /* OKhttp client (실제로 네트워크를 호출하는 부분) 생성 */
     val clinent: OkHttpClient by lazy {
@@ -26,13 +26,19 @@ object NetworkModule {
     */
     fun makeHttpUrl(searchSe: String, srchwrd: String): HttpUrl {
         //http://apis.data.go.kr/B552895/StatsInfoService/getDailyAdjStatsInfo
-        return HttpUrl.Builder()
+
+        return HttpUrl.Builder()   //http://openapi.epost.go.kr:80/postal/retrieveNewAdressAreaCdService?_wadl&type=xml
             .scheme("http")
             .host("openapi.epost.go.kr")
             .addPathSegment("postal")
             .addPathSegment("retrieveNewAdressAreaCdService")
             .addPathSegment("retrieveNewAdressAreaCdService")
+
             .addPathSegment("getNewAddressListAreaCd")
+            .addQueryParameter("searchSe",searchSe)
+            .addQueryParameter("srchwrd", srchwrd)
+            .addQueryParameter("countPerPage", "10")
+            .addQueryParameter("currentPage", "1")
             .addQueryParameter("_returnType", "json")
             .build()
     }//end of makeHttpUrl

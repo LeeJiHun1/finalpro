@@ -82,9 +82,9 @@ class ResultViewModel: ViewModel() {
         val request = NetworkModule.makeHttprequest(
             /* 분류코드(소분류), 검색일자, 검색수량을 인자로 HttpUrl 객체 생성 함수를 호출하여
                HttpUrl 객체 생성 */
-            NetworkModule.makeHttpUrl(
-                searchSe = selectsearchSe,
-                srchwrd = selectsrchwrd
+            NetworkModule.makeHttpUrl(          //전달 인자
+                searchSe = selectsearchSe,    //dong을 입력받음
+                srchwrd = selectsrchwrd      //주소를 입력받음
             )
         )
 
