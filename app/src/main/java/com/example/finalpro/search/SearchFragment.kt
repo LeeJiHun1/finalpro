@@ -52,7 +52,7 @@ class SearchFragment : Fragment() {
      */
     /* -----------------------Alert Dialog------------------------*/
     /* 과일 선택을 위한 Dialog 설정입니다. */
-    val alertDialog by lazy {
+   /* val alertDialog by lazy {
 
         /* Dialog의 builder 클래스를 초기화 */
         val builder = AlertDialog.Builder(requireContext())
@@ -72,7 +72,7 @@ class SearchFragment : Fragment() {
         /* 만든 builder를 리턴합니다. */
         builder.create() //return 되는 value
     }
-    /* -----------------------Alert Dialog------------------------*/
+    /* -----------------------Alert Dialog------------------------*/*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

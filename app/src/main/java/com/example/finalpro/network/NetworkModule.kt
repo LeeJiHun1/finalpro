@@ -33,7 +33,6 @@ object NetworkModule {
             .addPathSegment("postal")
             .addPathSegment("retrieveNewAdressAreaCdService")
             .addPathSegment("retrieveNewAdressAreaCdService")
-
             .addPathSegment("getNewAddressListAreaCd")
             .addQueryParameter("searchSe",searchSe)
             .addQueryParameter("srchwrd", srchwrd)

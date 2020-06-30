@@ -1,31 +1,37 @@
 package com.example.finalpro.result
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalpro.R
+//import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.example.finalpro.DatabaseModule.DatabaseModule
-import com.example.finalpro.list.Location
-
-
 import kotlinx.android.synthetic.main.fragment_result.view.*
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserFactory
+import java.io.InputStreamReader
+import java.net.URL
+import java.net.URLEncoder
+import com.example.finalpro.R
+import java.io.InputStream
+import kotlinx.android.synthetic.main.fragment_result.view.*
+import android.util.Log
 
 class ResultFragment : Fragment() {
-
-    /* 데이터베이스를 가져옵니다.*/
+   /* 데이터베이스를 가져옵니다.*/
     val database by lazy {
         DatabaseModule.getDatabase(requireContext())
     }
-
     //resultViewModel 참조
     val resultViewModel by lazy {
         ViewModelProvider(requireActivity()).get(ResultViewModel::class.java)
@@ -82,6 +88,7 @@ class ResultFragment : Fragment() {
                 )
             );
 
+
             /* 리사이클러뷰에 어댑터 및 레이아웃메니저 설정 */
             view.recycle_result.adapter = resultAdpater
             view.recycle_result.layoutManager = LinearLayoutManager(requireContext())
@@ -104,5 +111,5 @@ class ResultFragment : Fragment() {
                 }
             }//end of view.floting_save.setOnClickListener
         }//end of if
-    }//end of onViewCreated
+    }//end of onViewCreated*/
 }
